@@ -10,12 +10,16 @@ export class SendEmailsService {
       service: 'gmail',
       auth: {
         user: process.env.USER_EMAIL,
-        pass: process.env.USER_PASS
+        pass: process.env.USER_PASS,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET
       }
     })
   }
 
   async sendEmailMain(to_email: string, subject: string, text: string) : Promise<string>{
+      console.log(process.env.USER_EMAIL);
+      
       await this.transported.sendMail({
         from: process.env.USER_EMAIL,
         to: to_email,
